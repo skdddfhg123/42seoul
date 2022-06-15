@@ -1,0 +1,12 @@
+{
+	"files.associations": {
+		"chrono": "c",
+		"memory": "c",
+		"ostream": "c",
+		"libft.h": "c",
+		"philo.h": "c",
+		"stdlib.h": "c",
+		"locale": "c",
+		"__threading_support": "c"
+	}
+}

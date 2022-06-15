@@ -1,0 +1,14 @@
+{
+	"files.associations": {
+		"libft.h": "c",
+		"array": "c",
+		"vector": "c",
+		"string": "c",
+		"string_view": "c",
+		"get_next_line.h": "c",
+		"pushswap.h": "c",
+		"atomic": "c",
+		"bitset": "c",
+		"string.h": "c"
+	}
+}
