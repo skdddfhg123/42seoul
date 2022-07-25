@@ -1,0 +1,8 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/woon/workspace/test/test'
+cd lib && make all
+make -C ./minilibx_opengl_20191021
+gcc -Wall -Werror -Wextra -L ./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework Appkit -framework OpenCL src/main.o src/checkMap.o src/checkMapUtil.o src/checkElement.o src/checkMapError.o src/util.o src/start.o src/raycastWall.o src/raycastHeight.o src/raycastUtils.o src/settingRay.o src/key.o src/render.o src/setTexture.o ./minilibx_opengl_20191021/libmlx.a lib/dmcw.a -o cub3D
+ 
+make: Leaving directory `/Users/woon/workspace/test/test'
+ 
