@@ -6,7 +6,7 @@
 /*   By: idongmin <idongmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 10:53:12 by idongmin          #+#    #+#             */
-/*   Updated: 2022/09/04 17:45:48 by idongmin         ###   ########.fr       */
+/*   Updated: 2022/09/05 00:35:42 by idongmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ Contact::~Contact(void) {
 }
 
 int	Phonebook::getIndex(void) {
-	return (i_);
+	return (_i);
 }
 
 void	Phonebook::setIndex(int i) {
-	i_ = i;
+	_i = i;
 }
 
 void	Phonebook::PrintCMD() {
@@ -224,19 +224,15 @@ int	Phonebook::OldestDelete(void)
 	std::cout << "will you delete the oldest contacts? [ YES, NO ]" << std::endl;
 	getline(std::cin, input);
 	if (std::cin.good()) ;
-	else if (std::cin.fail())
-	{
+	else if (std::cin.fail()) {
 		std::cout << "you enter fail input" << std::endl;
 		return (-1);
 	}
-	if (input == "YES" || input == "yes")
-	{
-		for (int j = 1; j < 8; j++)
-		{
+	if (input == "YES" || input == "yes") {
+		for (int j = 1; j < 8; j++) {
 			contact[j - 1] = contact[j];
 		}
 		contact[7].clear();
-		
 		std::cout << "removed successfully!" << std::endl;
 		Phonebook::setIndex(7);
 		return (7);
@@ -246,7 +242,7 @@ int	Phonebook::OldestDelete(void)
 
 Phonebook::Phonebook(void) {
 	std::cout << "Opening Phone Book" << std::endl;
-	i_ = 0;
+	_i = 0;
 }
 
 Phonebook::~Phonebook(void) {
