@@ -6,7 +6,7 @@
 /*   By: idongmin <idongmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 10:53:12 by idongmin          #+#    #+#             */
-/*   Updated: 2022/09/04 16:23:12 by idongmin         ###   ########.fr       */
+/*   Updated: 2022/09/04 17:45:48 by idongmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,14 @@ Contact::Contact(void) {
 Contact::~Contact(void) {
 }
 
+int	Phonebook::getIndex(void) {
+	return (i_);
+}
+
+void	Phonebook::setIndex(int i) {
+	i_ = i;
+}
+
 void	Phonebook::PrintCMD() {
 	std::cout << "Please enter one of the commands on the right [ ADD | SEARCH | EXIT ]" << std::endl;
 	std::cout << "> ";
@@ -79,12 +87,13 @@ std::string	Phonebook::CutString(std::string str)
 		return (str);
 }
 
-int		Phonebook::Search(int cnt) {
+int		Phonebook::Search(void) {
 	std::string input;
+	int cnt = Phonebook::getIndex();
 
 	if (cnt == 0) {
 		std::cout << "Empty phone number" << std::endl;
-		return (0);
+		return (1);
 	}
 	std::cout << "=============================================" << std::endl;
 	std::cout << "|" << std::setfill(' ') << std::setw(10) << "index"
@@ -122,12 +131,13 @@ int		Phonebook::Search(int cnt) {
 		std::cout << std::endl;
 		break;
 	}
-	return (0);
+	return (1);
 }
 
-int		Phonebook::Add(int i) {
+int		Phonebook::Insert(void) {
 	std::string str;
 
+	int i = Phonebook::getIndex();
 	std::cout << "Please enter first name." << std::endl;
 	getline(std::cin, str);
 	if (std::cin.good()) ;
@@ -137,7 +147,6 @@ int		Phonebook::Add(int i) {
 	}
 	if (str.empty()) {
 		std::cout << "you enter empty input" << std::endl;
-		std::cout << i << "test" << std::endl;
 		return (i);
 	}
 	contact[i].setFirstName(str);
@@ -155,53 +164,58 @@ int		Phonebook::Add(int i) {
 	contact[i].setLastName(str);
 	std::cout << "Please enter nickname." << std::endl;
 	getline(std::cin, str);
-	if (std::cin.good())
-		;
-	else if (std::cin.fail())
-	{
+	if (std::cin.good()) ;
+	else if (std::cin.fail()) {
 		std::cout << "you enter fail input" << std::endl;
 		return (-1);
 	}
-	if (str.empty())
-	{
+	if (str.empty()) {
 		std::cout << "you enter empty input" << std::endl;
 		return (i);
 	}
 	contact[i].setNickName(str);
 	std::cout << "Please enter phone number." << std::endl;
 	getline(std::cin, str);
-	if (std::cin.good())
-		;
-	else if (std::cin.fail())
-	{
+	if (std::cin.good()) ;
+	else if (std::cin.fail()) {
 		std::cout << "you enter fail input" << std::endl;
 		return (-1);
 	}
-	if (str.empty())
-	{
+	if (str.empty()) {
 		std::cout << "you enter empty input" << std::endl;
 		return (i);
 	}
 	contact[i].setPhone(str);
 	std::cout << "Please enter darkest secret." << std::endl;
 	getline(std::cin, str);
-	if (std::cin.good())
-		;
-	else if (std::cin.fail())
-	{
+	if (std::cin.good()) ;
+	else if (std::cin.fail()) {
 		std::cout << "you enter fail input" << std::endl;
 		return (-1);
 	}
-	if (str.empty())
-	{
+	if (str.empty()) {
 		std::cout << "you enter empty input" << std::endl;
 		return (i);
 	}
 	contact[i].setSecret(str);
-	std::cout << std::endl;	
-	i += 1;
+	Phonebook::setIndex(i + 1);
 	return (i);
-};
+}
+
+int		Phonebook::Add(void) {
+	int	cnt = Phonebook::getIndex();
+	if (cnt < 8) {
+		cnt = Phonebook::Insert();
+		if (cnt == -1)
+			return (-1);
+	}
+	else {
+		std::cout << "PHONEBOOK IS FULL" << std::endl;
+		if(!(cnt = Phonebook::OldestDelete()))
+			return 0;
+	}
+	return (1);
+}
 
 int	Phonebook::OldestDelete(void)
 {
@@ -224,6 +238,7 @@ int	Phonebook::OldestDelete(void)
 		contact[7].clear();
 		
 		std::cout << "removed successfully!" << std::endl;
+		Phonebook::setIndex(7);
 		return (7);
 	}
 	return (8);
@@ -231,6 +246,7 @@ int	Phonebook::OldestDelete(void)
 
 Phonebook::Phonebook(void) {
 	std::cout << "Opening Phone Book" << std::endl;
+	i_ = 0;
 }
 
 Phonebook::~Phonebook(void) {

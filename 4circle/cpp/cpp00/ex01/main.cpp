@@ -6,7 +6,7 @@
 /*   By: idongmin <idongmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 10:53:13 by idongmin          #+#    #+#             */
-/*   Updated: 2022/09/04 16:16:57 by idongmin         ###   ########.fr       */
+/*   Updated: 2022/09/04 17:42:02 by idongmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(void) {
 	Phonebook	PB;
 
 	std::string input;
-	int cnt = 0;
+	int flag = 0;
 	while (true) {
 		PB.PrintCMD();
 		std::getline(std::cin, input);
@@ -26,28 +26,15 @@ int	main(void) {
 			return (0);
 		}
 		if (input == "EXIT" || input == "exit")
-			break;
+			break ;
 		else if (input == "ADD" || input == "add") {
-			if (cnt < 8) {
-				cnt = PB.Add(cnt);
-				if (cnt == -1)
-					return (0);
-			}
-			else {
-				std::cout << "PHONEBOOK IS FULL" << std::endl;
-				if(!(cnt = PB.OldestDelete()))
-					return 0;
-				else {
-					cnt = PB.Add(cnt);
-					if (cnt == -1)
-						return (0);
-					std::cout << cnt << std::endl;
-				}
-			}
+			flag = PB.Add();
+			if (flag == -1)
+				return (0);
 		}
 		else if (input == "SEARCH" || input == "search")
 		{
-			int flag = PB.Search(cnt);
+			flag = PB.Search();
 			if (flag == -1)
 				return (0);
 		}

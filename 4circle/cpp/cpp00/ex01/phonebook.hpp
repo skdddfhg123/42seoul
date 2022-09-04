@@ -6,7 +6,7 @@
 /*   By: idongmin <idongmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 10:53:10 by idongmin          #+#    #+#             */
-/*   Updated: 2022/09/04 16:26:28 by idongmin         ###   ########.fr       */
+/*   Updated: 2022/09/04 17:41:53 by idongmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,17 @@ public:
 class Phonebook {
 private:
 	Contact		contact[8];
+	int			i_;
 public:
 	Phonebook(void);
+	int			getIndex(void);
+	void		setIndex(int i);
 	void		PrintCMD(void);
 	void		PrintContact(int i);
-	int			Search(int cnt);
+	int			Search(void);
 	int			OldestDelete(void);
-	int			Add(int i);
+	int			Add(void);
+	int			Insert(void);
 	std::string	CutString(std::string str);
 	~Phonebook(void);
 };
