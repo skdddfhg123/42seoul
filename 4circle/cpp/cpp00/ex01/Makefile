@@ -5,27 +5,27 @@
 #                                                     +:+ +:+         +:+      #
 #    By: idongmin <idongmin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/19 18:40:09 by idongmin          #+#    #+#              #
-#    Updated: 2022/07/19 18:44:47 by idongmin         ###   ########.fr        #
+#    Created: 2022/09/04 10:38:13 by idongmin          #+#    #+#              #
+#    Updated: 2022/09/04 11:24:40 by idongmin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	megaphone
-SRCS	= 	megaphone.cpp
+NAME	=	phonebook
+SRCS	=	main.cpp phonebook.cpp
 FLAG	= 	-std=c++98 -Wall -Wextra -Werror
 CC		=	c++
 RM		=	rm -rf
 
-all		: $(NAME)
+all		=	$(NAME)
 
-$(NAME)	: $(SRCS)
+$(NAME)	:	$(SRCS)
 	@$(CC) $(FLAG) $(SRCS) -o $@
 
 clean	:
 	@$(RM) $(NAME)
-	
-fclean	: clean
-	
-re		: fclean all
+
+fclean	:	clean
+
+re		:	fclean all
 
 .PHONY: all clean fclean re
