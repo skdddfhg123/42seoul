@@ -6,7 +6,7 @@
 /*   By: idongmin <idongmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 03:30:32 by idongmin          #+#    #+#             */
-/*   Updated: 2022/09/05 11:27:28 by idongmin         ###   ########.fr       */
+/*   Updated: 2022/09/06 12:18:20 by idongmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,38 @@
 #include <cstring>
 #include <fstream>
 
-void	Writeline(bool &check,
+void	Writeline(bool &flag,
 				std::ofstream &writeFile,
 				std::string line,
-				std::string target) {
-	if (check)
-	{
-		writeFile << line << target;
-		check = false;
+				std::string to_change) {
+	if (flag) {
+		writeFile << line << to_change;
+		flag = false;
 	}
 	else
-		writeFile << std::endl << line << target;
+		writeFile << std::endl << line << to_change;
 }
 
 void	Transform(std::ifstream &readFile,
 				std::ofstream &writeFile,
 				const std::string& s1,
 				const std::string& s2) {
-	bool		check = true;
 	std::string	to_find(s1);
-	std::string	target(s2);
+	std::string	to_change(s2);
 	std::string	line;
+	bool		flag = true;
 	
-	while (std::getline(readFile, line))
-	{
+	while (std::getline(readFile, line)) {
 		size_t	Next = line.find(to_find);
 
 		if (Next == std::string::npos)
-			Writeline(check, writeFile, line, "");
-		else
-		{
-			Writeline(check, writeFile, line.substr(0, Next), target);
+			Writeline(flag, writeFile, line, "");
+		else {
+			Writeline(flag, writeFile, line.substr(0, Next), to_change);
 			std::string	nextLine = line.substr(Next + to_find.length());
 			Next = nextLine.find(to_find);
-			while (Next != std::string::npos)
-			{
-				writeFile << nextLine.substr(0, Next) << target;
+			while (Next != std::string::npos) {
+				writeFile << nextLine.substr(0, Next) << to_change;
 				nextLine = nextLine.substr(Next + to_find.length());
 				Next = nextLine.find(to_find);
 			}
@@ -62,7 +58,7 @@ void	Replace(const std::string& filename,
 				const std::string& s1,
 				const std::string& s2) {
 	std::ifstream	readfile(filename);
-	if (readfile.fail()) {
+	if (!(readfile.is_open())) {
 		std::endl(std::cout << "Error: Read file.");
 		return ;
 	}
