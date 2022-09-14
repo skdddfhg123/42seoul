@@ -1,0 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: idongmin <idongmin@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/14 04:10:46 by idongmin          #+#    #+#             */
+/*   Updated: 2022/09/14 08:15:54 by idongmin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
+
+#include "Form.hpp"
+
+#define	P_Sign		25
+#define	P_Exec		5
+
+class PresidentialPardonForm : public Form
+{
+	public:
+		PresidentialPardonForm();
+		PresidentialPardonForm(const std::string& target);
+		PresidentialPardonForm(const PresidentialPardonForm& src);
+		~PresidentialPardonForm();
+		PresidentialPardonForm& operator=(const PresidentialPardonForm& src);
+		
+		void execute(const Bureaucrat& src) const;
+};
+
+#endif
