@@ -6,7 +6,7 @@
 /*   By: idongmin <idongmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 01:52:17 by idongmin          #+#    #+#             */
-/*   Updated: 2022/09/14 03:40:25 by idongmin         ###   ########.fr       */
+/*   Updated: 2022/09/14 09:46:05 by idongmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 }
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& src) {
-	return out << src.getName() << ", bureaucrat grade " << src.getGrade();
+	return (out << src.getName() << ", bureaucrat grade " << src.getGrade());
 }

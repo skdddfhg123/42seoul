@@ -6,11 +6,11 @@
 #    By: idongmin <idongmin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/13 17:02:18 by idongmin          #+#    #+#              #
-#    Updated: 2022/09/13 17:02:39 by idongmin         ###   ########.fr        #
+#    Updated: 2022/09/14 09:02:15 by idongmin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	Bureaucrat
+NAME		=	ex00
 SRCS		= 	main.cpp Bureaucrat.cpp
 CPPFLAGS	= 	-std=c++98 -Wall -Wextra -Werror
 CXX			=	c++
