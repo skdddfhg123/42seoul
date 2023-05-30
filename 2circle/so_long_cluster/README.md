@@ -65,7 +65,7 @@ main함수의 로직은 다음과 같다.
 
 실행 화면
 
-![Screen Shot 2023-05-30 at 11.29.55 AM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a39f34bb-2e8d-4f86-8f76-7ba69cff9806/Screen_Shot_2023-05-30_at_11.29.55_AM.png)
+![Screen Shot 2023-05-30 at 11.29.55 AM.png]([https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a39f34bb-2e8d-4f86-8f76-7ba69cff9806/Screen_Shot_2023-05-30_at_11.29.55_AM.png](https://github.com/skdddfhg123/42seoul/assets/67137898/55a73c8e-6cfc-4acb-96f4-7bfcdc67bcf1))
 
 터미널에는 현재 플레이의 좌표 값과 이동한 걸음의 수를 표기하고 있다.
 
